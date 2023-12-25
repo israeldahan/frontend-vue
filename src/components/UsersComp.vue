@@ -1,7 +1,4 @@
 <template>
-    <main>
-        <AddUserForm />
-    </main>
     <div>
         <h1>Users</h1>
         <div v-for="user in users" :key="user.id">
@@ -18,11 +15,14 @@
 <script setup>
 
 import { ref } from 'vue'
-import AddUserForm from '@/components/AddUserForm.vue'
 const users = ref([])
 
 const fetchUsers = async () => {
-    const response = await fetch('http://localhost:3000/users')
+    const response = await fetch('http://localhost:3000/users', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
     users.value = await response.json()
 }
 

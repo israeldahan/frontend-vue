@@ -1,8 +1,8 @@
 <template>
 
     <div>
-        <h1>Add User</h1>
-        <form @submit.prevent="addUser">
+        <h1>Register</h1>
+        <form @submit.prevent="login">
             <div>
             <label for="firstname">First Name</label>
             <input type="firstname" id="firstname" v-model="firstname" />
@@ -43,6 +43,9 @@
             </div>
             <button type="submit">Register</button>
         </form>
+        <div v-if="result">
+            {{ result }}
+        </div>
     </div>
 </template>
 
@@ -58,8 +61,9 @@ const role = ref('')
 const status = ref('')
 const phone = ref('')
 const address = ref('')
+const result = ref('')
 
-const addUser = async () => {
+const login = async () => {
   const credentials = {
     firstName: firstname.value,
     lastName: lastname.value,
@@ -70,16 +74,19 @@ const addUser = async () => {
     address: address.value,
     phone: phone.value
   }
-    const response = await fetch('http://localhost:3000/users/', {
+    const response = await fetch('http://localhost:3000/users/register', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
         },
         body: JSON.stringify(credentials)
     })
 
     const data = await response.json()
+    result.value = data
     console.log(data)
+    localStorage.setItem('token', data.token)
+
+    
 }
 </script>

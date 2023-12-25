@@ -19,11 +19,9 @@
 <script setup>
 
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
-const router = useRouter()
 
 const login = async () => {
   const credentials = {
@@ -43,7 +41,6 @@ const login = async () => {
     localStorage.setItem('token', data.token)
 
     
-  router.push('/')
 }
 
 </script>
