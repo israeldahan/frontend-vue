@@ -70,7 +70,7 @@ const addUser = async () => {
     address: address.value,
     phone: phone.value
   }
-    const response = await fetch(`http://${import.meta.env.VITE_HOST_API}/users/`, {
+    const response = await fetch(`https://${import.meta.env.VITE_HOST_API}/users/`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',

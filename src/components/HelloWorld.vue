@@ -9,7 +9,7 @@ defineProps({
 })
 const user = ref('')
 const getUser = () => {
-  fetch(`http://${import.meta.env.VITE_HOST_API}/users/me/`,
+  fetch(`https://${import.meta.env.VITE_HOST_API}/users/me/`,
     {
       "method": "POST",
       headers: {
