@@ -28,7 +28,7 @@ const login = async () => {
     email: email.value,
     password: password.value
   }
-    const response = await fetch('http://import.meta.env.HOST_API/users/login', {
+    const response = await fetch(`http://${import.meta.env.HOST_API}/users/login`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
