@@ -74,7 +74,7 @@ const login = async () => {
     address: address.value,
     phone: phone.value
   }
-    const response = await fetch(`http://${import.meta.env.HOST_API}/users/register`, {
+    const response = await fetch(`http://${import.meta.env.VITE_HOST_API}/users/register`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
